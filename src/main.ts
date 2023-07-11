@@ -1,38 +1,21 @@
-import moment from 'moment';
-import { Alumno } from './alumno/alumno';
-import { Ialumno } from './alumno/alumno.interfaces';
-import readline from 'readline';
-import fs from 'fs';
+import axios from 'axios';
+// import moment from 'moment';
+// import { Alumno } from './alumno/alumno';
+// import { Ialumno } from './alumno/alumno.interfaces';
+// import readline from 'readline';
+// import fs from 'fs';
 
 console.log('Alumnos crud v0.0.1');
 
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
-});
+async function getPokemonData() {
+  try {
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto');
+    const pokemonData = response.data;
+    console.log(pokemonData);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-const formularioAlumnos = () => {
-	rl.question('Ingrese el nombre del alumno: ', (nombre) => {
-		rl.question('Ingrese el apellido del alumno:', (apellido) => {
-			rl.question('Ingrese el email del alumno: ', (email) => {
-				rl.question('Ingrese el teléfono del alumno: ', (telefono) => {
-					rl.question('¿El alumno está activo? (si/no): ', (activo) => {
-						const a: Ialumno = {
-							nombre,
-							apellido,
-							email: email.toLowerCase(),
-							telefono,
-							activo: activo.toLowerCase() === 'si',
-							fechaIngreso: moment().format('DD-MM-YYYY').toString(),
-						};
-						const alumno = new Alumno(a);
-						alumno.guardarAlumno(alumno);
-						rl.close();
-					});
-				});
-			});
-		});
-	});
-};
+getPokemonData();
 
-formularioAlumnos();

@@ -22,5 +22,13 @@
     "telefono": "90312322",
     "fechaIngreso": "05-07-2023",
     "activo": true
+  },
+  {
+    "nombre": "juan",
+    "apellido": "natello",
+    "email": "juanmannat@gmail.com",
+    "telefono": "1134387233",
+    "fechaIngreso": "10-07-2023",
+    "activo": true
   }
 ]
