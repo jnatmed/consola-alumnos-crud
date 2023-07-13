@@ -14,7 +14,7 @@ const pedidoDatosPokemon = () => {
       .then( data => {
         console.log(data);
       })
-      .catch(error => {
+      .catch( () => {
         console.log('Pokemon no encontrado');
       });
 	});
